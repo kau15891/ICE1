@@ -4,31 +4,49 @@
  */
 package days;
 
-import java.util.Scanner;
+  import java.util.Scanner;
 
-/**This class takes String input from user 
- * and calls method  to print the 
- * name of the day.
- * if the input is not given in String, 
- * program will accept and produce wrong results. 
- * change the code to use enums which avoids String input 
- * then print the week day names. 
- *
- * @author sivagamasrinivasan
- */
-public class Days {
+public class Main {
+    // Define an enum for days of the week
+    enum Day {
+        SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
+    }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-         
-    Scanner in =new Scanner(System.in);
-    System.out.println("Enter the day number (one,two,three,four,five) in string");
-    String code = in.next();
-    Weekdays t= new Weekdays();
-    t.nameOfDay(code); 
-    }// TODO code application logic here
-    
-    
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter the day number (0 for Sunday, 1 for Monday, ..., 6 for Saturday): ");
+        int dayNumber = input.nextInt();
+
+        // Check if the entered day number is within valid range
+        if (dayNumber >= 0 && dayNumber <= 6) {
+            Day day = Day.values()[dayNumber];
+            System.out.println("Day: " + day + ", Name: " + getDayName(day));
+        } else {
+            System.out.println("Invalid day number. Please enter a number between 0 and 6.");
+        }
+    }
+
+    // Method to get the name of the day
+    private static String getDayName(Day day) {
+        switch (day) {
+            case SUNDAY:
+                return "Sunday";
+            case MONDAY:
+                return "Monday";
+            case TUESDAY:
+                return "Tuesday";
+            case WEDNESDAY:
+                return "Wednesday";
+            case THURSDAY:
+                return "Thursday";
+            case FRIDAY:
+                return "Friday";
+            case SATURDAY:
+                return "Saturday";
+            default:
+                return "Invalid day";
+        }
+    }
 }
+
+    
